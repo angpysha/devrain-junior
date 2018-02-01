@@ -1,5 +1,5 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<!--<div style="text-align:center">
   <h1>
     Welcome to {{title}}!
   </h1>
@@ -16,5 +16,65 @@
   <li>
     <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
   </li>
-</ul>
+</ul>-->
+<div style="text-align: center">
+  <h1>To-Do List</h1>
+</div>
+<div class="col create-form">
+  <button type="button" class="btn btn-info btn-lg" *ngIf="!createVisible" (click)="createVisible=!createVisible">Create new task</button>
+  <div class="form col-md-offset-2">
+    <form (ngSubmit)="Add(task)" *ngIf="createVisible">
+      <div class="form-group col-md-offset-1">
+        <label for="name">Task name: </label>
+        <input class="form-control col-md-4" type="text" id="name"
+               [(ngModel)]="task.name" name="name" />
+      </div>
+      <div class="form-group col-md-offset-1">
+        <label for="name">Task description: </label>
+        <input class="form-control col-md-4" type="text"
+               id="description" [(ngModel)]="task.description" name="description" />
+      </div>
+      <div class="form-group">
+        <label for="date">Date: </label>
+        <input class="form-control col-md-4" type="date"
+               id="date" [ngModel]="task.date | date:'yyyy-MM-dd'"
+               (ngModelChange)="task.date = $event" name="date" />
+      </div>
+
+      <div class="btn-group">
+        <button type="submit" class="form-control btn btn-success">Create</button>
+        <button type="button" class="btn btn-primary" (click)="createVisible=!createVisible">Hide</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="col">
+  <table class="table table-bordered" *ngIf="tasks">
+    <thead>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Date</th>
+    <th>Done</th>
+    <th>Actions</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of tasks">
+        <td>{{task.id}}</td>
+        <td><input type="text" class="form-control" [(ngModel)]="task.name" /></td>
+        <td><input type="text" class="form-control" [(ngModel)]="task.description" /></td>
+        <td>
+          <input type="date" [ngModel]="task.date | date:'yyyy-MM-dd'" (ngModelChange)="task.date = $event" />
+        </td>
+        <td><input type="checkbox" class="form-control" [(ngModel)]="task.done" /></td>
+        <td>
+          <div class="btn-group">
+            <button type="button" class="btn btn-warning" (click)="Update(task)">Update</button>
+            <button type="button" class="btn btn-danger" (click)="Delete(task)">Delete</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
