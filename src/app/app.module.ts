@@ -7,6 +7,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { RoutingModule } from './routing/routing.module';
 import { TaskService } from 'app/services/task.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent
@@ -17,7 +18,9 @@ import { TaskService } from 'app/services/task.service';
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
     RoutingModule,
-    HttpModule
+    HttpModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     TaskService
