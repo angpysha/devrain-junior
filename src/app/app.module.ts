@@ -5,7 +5,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { AppComponent } from './app.component';
-
+import { RoutingModule } from './routing/routing.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +15,8 @@ import { AppComponent } from './app.component';
     BrowserModule,
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    RoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
