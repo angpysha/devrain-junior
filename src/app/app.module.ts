@@ -9,15 +9,15 @@ import { RoutingModule } from './routing/routing.module';
 import { TaskService } from 'app/services/task.service';
 @NgModule({
   declarations: [
-    AppComponent,
-    HttpModule
+    AppComponent
   ],
   imports: [
     BrowserModule,
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
-    RoutingModule
+    RoutingModule,
+    HttpModule
   ],
   providers: [
     TaskService
